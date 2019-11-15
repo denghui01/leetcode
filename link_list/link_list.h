@@ -1,3 +1,4 @@
+#include <stdbool.h>
 typedef int data_t;
 typedef struct ListNode
 {

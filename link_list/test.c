@@ -46,7 +46,7 @@ int main()
     list2 = append_node(make_node(4), list2);    
     print_list(mergeTwoLists(list1, list2));
 
-    //83. Remove Duplicates from Sorted List
+    //83. Remove Duplicates from Sorted List#include <stdbool.h>
     ptr_node list3 = NULL;
     list3 = append_node(make_node(1), list3);
     list3 = append_node(make_node(2), list3);
@@ -55,6 +55,17 @@ int main()
     list3 = append_node(make_node(3), list3);
 
     print_list(deleteDuplicates(list3));
+
+    //141. Linked List Cycle
+    ptr_node list4 = NULL;
+    list4 = append_node(make_node(1), list4);
+    list4 = append_node(make_node(2), list4);
+    list4 = append_node(make_node(2), list4);
+    list4 = append_node(make_node(2), list4);
+    list4 = append_node(make_node(3), list4);
+    ptr_node tail = list_tail(list4);
+    //tail->next = list4->next->next;
+    printf("%s\n", hasCycle(list4)?"Yes":"No");
 
     return EXIT_SUCCESS;
 }

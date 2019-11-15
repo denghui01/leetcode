@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <stdbool.h>
 #include "link_list.h"
 
 void print_list(ptr_node head)
@@ -217,7 +216,31 @@ ptr_node deleteDuplicates2(ptr_node head)
     }
 }
 
+//141. Linked List Cycle
 bool hasCycle(ptr_node head) 
 {
-    
+    if(!head) return false;
+    ptr_node node1 = head;
+    ptr_node node2 = head->next;
+
+    while(node1 != node2)
+    {
+        node1 = node1->next;
+        if(node2)
+        {
+            node2 = node2->next;
+        }
+        else
+        {
+            return false;
+        }
+        if(node2){
+            node2 = node2->next;
+        }
+        else
+        {
+            return false;
+        }        
+    }  
+    return true;  
 }
