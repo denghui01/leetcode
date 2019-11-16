@@ -21,3 +21,4 @@ ptr_node deleteDuplicates2(ptr_node head);
 bool hasCycle(ptr_node head);
 bool isPalindrome(struct ListNode* head);
 ptr_node removeElements(ptr_node head, int val);
+ptr_node reverseKGroup(ptr_node head, int k);

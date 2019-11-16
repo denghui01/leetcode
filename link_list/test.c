@@ -75,5 +75,15 @@ int main()
     print_list(removeElements(list4, 2));
     print_list(removeElements(list4, 3));
 
+    //25. Reverse Nodes in k-Group
+    ptr_node list5 = NULL;
+    list5 = append_node(make_node(1), list5);
+    list5 = append_node(make_node(2), list5);
+    list5 = append_node(make_node(3), list5);
+    list5 = append_node(make_node(4), list5);
+    //list5 = append_node(make_node(5), list5);    
+    print_list(reverseKGroup(list5, 4));
+
+
     return EXIT_SUCCESS;
 }

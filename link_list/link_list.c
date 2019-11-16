@@ -295,3 +295,45 @@ ListNode* removeElements(ListNode* head, int val) {
     }
     return new_head;
 }
+
+// 25. Reverse Nodes in k-Group
+struct ListNode* reverseKGroup(struct ListNode* head, int k){
+    if(!head || k < 2) return head;
+
+    ptr_node origin_head = head;
+    int progress = 1;
+    for(;;)
+    {
+        while(progress % k != 0)
+        {
+            ++progress;
+            if(head)
+            {
+                head = head->next;
+            } 
+            else
+            {
+                break;
+            }
+        }
+
+        if(progress % k == 0)
+        {
+            ++progress;     
+            if(head) 
+            {
+                head = head->next;
+                origin_head = reverseBetween(origin_head, progress - k, progress - 1);                    
+            }
+            else
+            {
+                return origin_head;
+            }
+            
+        }
+        else
+        {
+            return origin_head;            
+        }         
+    }
+}
