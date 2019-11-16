@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "link_list.h": "c"
+        "link_list.h": "c",
+        "stdio.h": "c"
     }
 }

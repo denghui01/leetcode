@@ -19,3 +19,5 @@ ptr_node mergeTwoLists(ptr_node l1, ptr_node l2);
 ptr_node deleteDuplicates(ptr_node head);
 ptr_node deleteDuplicates2(ptr_node head);
 bool hasCycle(ptr_node head);
+bool isPalindrome(struct ListNode* head);
+ptr_node removeElements(ptr_node head, int val);

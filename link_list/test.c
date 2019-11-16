@@ -61,11 +61,19 @@ int main()
     list4 = append_node(make_node(1), list4);
     list4 = append_node(make_node(2), list4);
     list4 = append_node(make_node(2), list4);
-    list4 = append_node(make_node(2), list4);
     list4 = append_node(make_node(3), list4);
+    list4 = append_node(make_node(1), list4);
     ptr_node tail = list_tail(list4);
     //tail->next = list4->next->next;
-    printf("%s\n", hasCycle(list4)?"Yes":"No");
+    printf("Has Cycle? %s\n", hasCycle(list4)?"Yes":"No");
+
+    // 234. Palindrome Linked List
+    printf("Palindrome? %s\n", isPalindrome(list4)?"Yes":"No");
+
+    // 203. Remove Linked List Elements
+    print_list(removeElements(list4, 1));
+    print_list(removeElements(list4, 2));
+    print_list(removeElements(list4, 3));
 
     return EXIT_SUCCESS;
 }

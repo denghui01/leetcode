@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stack>
 #include "link_list.h"
+
+using namespace std;
 
 void print_list(ptr_node head)
 {
@@ -27,7 +30,7 @@ ptr_node list_tail(ptr_node head)
 
 ptr_node make_node(data_t x)
 {
-    ptr_node node = malloc(sizeof(ListNode));
+    ptr_node node = (ptr_node)malloc(sizeof(ListNode));
     node->val = x;
     node->next = NULL;
     return node;
@@ -214,6 +217,7 @@ ptr_node deleteDuplicates2(ptr_node head)
         node1 = node2;        
 
     }
+    return head;
 }
 
 //141. Linked List Cycle
@@ -243,4 +247,51 @@ bool hasCycle(ptr_node head)
         }        
     }  
     return true;  
+}
+
+// 234. Palindrome Linked List
+bool isPalindrome(struct ListNode* head){
+    if(!head) return true;
+
+    stack<ptr_node> s;
+    ptr_node origin = head;
+    while(head)
+    {
+        s.push(head);
+        head = head->next;
+    }
+
+    while(origin)
+    {
+        head = s.top();
+        if(origin->val != head->val){
+            return false;
+        }
+        s.pop();
+        origin = origin->next;
+    }
+    return true;    
+}
+
+// 203. Remove Linked List Elements
+ListNode* removeElements(ListNode* head, int val) {
+    if(!head) return NULL;
+    ptr_node new_head = NULL;
+    while(head && head->val == val)
+    {
+        head = head->next;
+    }
+    new_head = head;
+    while(head && head->next)    
+    {
+        if(head->next->val == val)
+        {
+            head->next = head->next->next;
+        }
+        else
+        {
+            head = head->next;
+        }        
+    }
+    return new_head;
 }
