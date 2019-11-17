@@ -81,8 +81,8 @@ int main()
     list5 = append_node(make_node(2), list5);
     list5 = append_node(make_node(3), list5);
     list5 = append_node(make_node(4), list5);
-    //list5 = append_node(make_node(5), list5);    
-    print_list(reverseKGroup(list5, 4));
+    list5 = append_node(make_node(5), list5);    
+    print_list(reverseKGroup(list5, 2));
 
 
     return EXIT_SUCCESS;
