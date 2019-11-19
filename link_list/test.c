@@ -82,7 +82,33 @@ int main()
     list5 = append_node(make_node(3), list5);
     list5 = append_node(make_node(4), list5);
     list5 = append_node(make_node(5), list5);    
-    print_list(reverseKGroup(list5, 2));
+    print_list(reverseKGroup(list5, 5));
+
+    ptr_node list6 = NULL;
+    list6 = append_node(make_node(1), list6);
+    list6 = append_node(make_node(2), list6);
+    list6 = append_node(make_node(3), list6);
+    list6 = append_node(make_node(4), list6);
+    list6 = append_node(make_node(5), list6);    
+
+    ptr_node list7 = NULL;
+    list7 = append_node(make_node(7), list7);
+    list7 = append_node(make_node(8), list7);
+    list7 = append_node(make_node(9), list7);
+
+    tail = list_tail(list7);
+    tail->next = list6->next->next->next;
+    ptr_node rlist = getIntersectionNode(list6, list7);
+    if(rlist == NULL)
+    {
+        printf("No intersection\n");
+    }
+    else
+    {
+        printf("Intersected on %d\n", rlist->val);
+    }
+    
+    
 
 
     return EXIT_SUCCESS;

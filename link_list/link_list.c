@@ -225,28 +225,18 @@ bool hasCycle(ptr_node head)
 {
     if(!head) return false;
     ptr_node node1 = head;
-    ptr_node node2 = head->next;
+    ptr_node node2 = head;
 
-    while(node1 != node2)
+    while(node2->next != NULL)
     {
         node1 = node1->next;
-        if(node2)
+        node2 = node2->next->next;
+        if(node1 == node2)
         {
-            node2 = node2->next;
+            return true;
         }
-        else
-        {
-            return false;
-        }
-        if(node2){
-            node2 = node2->next;
-        }
-        else
-        {
-            return false;
-        }        
-    }  
-    return true;  
+    }
+    return false;  
 }
 
 // 234. Palindrome Linked List
@@ -304,18 +294,52 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k){
     int progress = 0;
     for(;;)
     {
-        while(++progress % k != 0)
+        if(head)
         {
-            if(head)
-            {
-                head = head->next;
-            } 
-            else
-            {
-                return origin_head;
-            }
+            head = head->next;
+        } 
+        else
+        {
+            return origin_head;
         }
-        head = head->next;
-        origin_head = reverseBetween(origin_head, progress - k + 1, progress);                    
+        ++progress;
+        if(progress % k == 0)
+        {
+            origin_head = reverseBetween(origin_head, progress - k + 1, progress);                    
+        }
     }    
+}
+
+// 160. Intersection of Two Linked Lists
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
+    if(!headA || !headB) return NULL;
+
+    ptr_node tailB = list_tail(headB);
+    tailB->next = headB;  // Loop listB
+
+    ptr_node node1 = headA;
+    ptr_node node2 = headA;
+
+    while(node2->next)
+    {
+        node1 = node1->next;
+        node2 = node2->next->next;
+        if(node1 == node2)
+        {
+            break;
+        }
+    }
+
+    if(!node2->next)
+    {
+        return NULL;
+    }
+
+    node1 = headA;
+    while(node1 != node2)
+    {
+        node1 = node1->next;
+        node2 = node2->next; 
+    }
+    return node1;
 }

@@ -22,3 +22,4 @@ bool hasCycle(ptr_node head);
 bool isPalindrome(struct ListNode* head);
 ptr_node removeElements(ptr_node head, int val);
 ptr_node reverseKGroup(ptr_node head, int k);
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB);
