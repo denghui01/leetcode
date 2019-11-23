@@ -53,6 +53,17 @@ ptr_node append_node(ptr_node node, ptr_node head)
     }    
 }
 
+int list_len(ptr_node head)
+{
+    int length = 0;
+    while(head)
+    {
+        ++length;
+        head = head->next;
+    }
+    return length;
+}
+
 // Leetcode questions
 // 206. Reverse Linked List
 ptr_node reverse(ptr_node head)
@@ -320,7 +331,7 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
     ptr_node node1 = headA;
     ptr_node node2 = headA;
 
-    while(node2->next)
+    while(node2 && node2->next)
     {
         node1 = node1->next;
         node2 = node2->next->next;
@@ -330,7 +341,7 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
         }
     }
 
-    if(!node2->next)
+    if(!node2 || !node2->next)
     {
         return NULL;
     }
@@ -342,4 +353,41 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
         node2 = node2->next; 
     }
     return node1;
+}
+
+// 1019. Next Greater Node In Linked List
+typedef struct IndexNode
+{
+    int val;
+    int index;
+}IndexNode, *ptr_index;
+stack<ptr_index> s;
+void push_index(ptr_node node, int index, int *a)
+{
+    ptr_index index_node = (ptr_index)malloc(sizeof(IndexNode));
+    a[index] = 0;
+    index_node->val = node->val;
+    index_node->index = index;
+    s.push(index_node);
+}
+
+int* nextLargerNodes(struct ListNode* head, int* returnSize){
+    *returnSize = list_len(head);
+    if(!(*returnSize)) return NULL;
+
+    int i = 0;
+    int *ra = (int*)malloc(sizeof(int) * (*returnSize)); // result array
+    push_index(head, i++, ra);
+    head = head->next;
+    while(head)
+    {
+        while(!s.empty() && s.top()->val < head->val)
+        {
+            ra[s.top()->index] = head->val;
+            s.pop();
+        }
+        push_index(head, i++, ra);
+        head = head->next;
+    }
+    return ra;
 }

@@ -10,6 +10,7 @@ void print_list(ptr_node head);
 ptr_node append_node(ptr_node node, ptr_node head);
 ptr_node list_tail(ptr_node head);
 ptr_node make_node(data_t x);
+int list_len(ptr_node head);
 
 // Leetcode
 ptr_node reverse(ptr_node head);
@@ -23,3 +24,4 @@ bool isPalindrome(struct ListNode* head);
 ptr_node removeElements(ptr_node head, int val);
 ptr_node reverseKGroup(ptr_node head, int k);
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB);
+int* nextLargerNodes(struct ListNode* head, int* returnSize);
