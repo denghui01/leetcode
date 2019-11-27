@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <iostream>
 #include "link_list.h"
 #include "array.h"
 
@@ -138,6 +139,15 @@ int main()
     // 1252. Cells with Odd Values in a Matrix
     vector<vector<int>> v = {{1,1},{0,0}};
     printf("%d\n", oddCells(2, 2, v));
+
+    vector<int> vi = {1,2,3,4};
+    vector<int> re = sortArrayByParity(vi);
+    for(int i = 0; i < re.size(); ++i)
+    {
+        printf("%d ", re[i]);
+    }
+    printf("\n");
+    
 
     return EXIT_SUCCESS;
 }

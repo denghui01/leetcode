@@ -31,3 +31,30 @@ int oddCells(int n, int m, vector<vector<int>>& indices) {
     }
     return dm * n + dn * m - dn * dm * 2;           
 }
+
+// 905. Sort Array By Parity
+ vector<int> sortArrayByParity(vector<int>& A)
+ {
+     vector<int> r(A.size());
+     int even_end = 0;
+     int odd_end = A.size() - 1;
+     for(int i = 0; i < A.size(); ++i)
+     {
+         if(A[i] % 2 == 0)
+         {
+             r[even_end++] = A[i];
+         }
+         else
+         {
+             r[odd_end--] = A[i];
+         }         
+     }
+     return r;
+ }
+
+ // 977. Squares of a Sorted Array
+ vector<int> sortedSquares(vector<int>& A)
+ {
+ 
+        
+ }
