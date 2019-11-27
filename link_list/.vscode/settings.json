@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "link_list.h": "c",
-        "stdio.h": "c"
+        "link_list.h": "cpp",
+        "stdio.h": "c",
+        "vector": "cpp"
     }
 }

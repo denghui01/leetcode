@@ -9,7 +9,7 @@
             "command": "C:\\Mingw-w64\\mingw32\\bin\\g++.exe",
             "args": [
                 "-g",
-                "${fileDirname}\\*.c",
+                "${fileDirname}\\*.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
