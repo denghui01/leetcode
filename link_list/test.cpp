@@ -149,5 +149,12 @@ int main()
     printf("\n");
     
 
+    re = twoSum(vi, 7);
+    for(int i = 0; i < re.size(); ++i)
+    {
+        printf("%d ", re[i]);
+    }
+    printf("\n");
+
     return EXIT_SUCCESS;
 }

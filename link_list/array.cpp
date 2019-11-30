@@ -55,6 +55,24 @@ int oddCells(int n, int m, vector<vector<int>>& indices) {
  // 977. Squares of a Sorted Array
  vector<int> sortedSquares(vector<int>& A)
  {
- 
-        
+     vector<int> r;
+     return r;        
  }
+
+ // 1. Two Sum
+vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> r(2);
+    for(int i = 0; i < nums.size() - 1; ++i)
+    {
+        for(int j = i + 1; j < nums.size(); ++j)
+        {
+            if(nums[i] + nums[j] == target)
+            {
+                r[0] = i;
+                r[1] = j;
+                return r;
+            }
+        }
+    }
+    return r;
+}
