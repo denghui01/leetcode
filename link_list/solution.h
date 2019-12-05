@@ -3,9 +3,9 @@
 #include <vector>
 #include <string>
 #include <stack>
+#include <unordered_map>
 #include "link_list.h"
 using namespace std;
-
 // Leetcode
 ptr_node reverse(ptr_node head);
 ptr_node middle_node(ptr_node head);
@@ -26,6 +26,20 @@ vector<int> sortArrayByParity(vector<int>& A);
 vector<int> sortedSquares(vector<int>& A);
 vector<int> twoSum(vector<int>& nums, int target);
 vector<int> diStringMatch(string S);
+class CustomFunction {
+public:
+  // Returns positive integer f(x, y) for any given positive integer x and y.
+  int f(int x, int y){return x + y;}
+};
+vector<vector<int>> findSolution(CustomFunction& customfunction, int z);
+int reverse(int x);
+string convertToTitle(int n);
+int countPrimes(int n);
+int mySqrt(int x);
+bool judgeSquareSum(int c);
+bool hasGroupsSizeX(vector<int>& deck);
+vector<int> pathInZigZagTree(int label);
+string complexNumberMultiply(string a, string b);
 #endif
 
 

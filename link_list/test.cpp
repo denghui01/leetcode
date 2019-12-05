@@ -5,21 +5,30 @@
 #include "link_list.h"
 #include "solution.h"
 
-#define LEETCODE_206    1
-#define LEETCODE_876    1
-#define LEETCODE_92     1
-#define LEETCODE_21     1
-#define LEETCODE_83     1
-#define LEETCODE_141    1
-#define LEETCODE_234    1
-#define LEETCODE_203    1
-#define LEETCODE_25     1
-#define LEETCODE_160    1
-#define LEETCODE_1019   1
-#define LEETCODE_1252   1
-#define LEETCODE_905    1
-#define LEETCODE_1      1
-#define LEETCODE_942    1
+#define LEETCODE_206    0
+#define LEETCODE_876    0
+#define LEETCODE_92     0
+#define LEETCODE_21     0
+#define LEETCODE_83     0
+#define LEETCODE_141    0
+#define LEETCODE_234    0
+#define LEETCODE_203    0
+#define LEETCODE_25     0
+#define LEETCODE_160    0
+#define LEETCODE_1019   0
+#define LEETCODE_1252   0
+#define LEETCODE_905    0
+#define LEETCODE_1      0
+#define LEETCODE_942    0
+#define LEETCODE_1237   0
+#define LEETCODE_7      0
+#define LEETCODE_168    0
+#define LEETCODE_204    0
+#define LEETCODE_69     1
+#define LEETCODE_633    1
+#define LEETCODE_914    1
+#define LEETCODE_1104   1
+#define LEETCODE_537    1
 
 void print_list(ptr_node head)
 {
@@ -231,6 +240,81 @@ int main()
     string s4("IDID");
     vector<int> r4 = diStringMatch(s4);
     print_vector(r4);
+#endif
+
+#if (LEETCODE_1237)
+// 1237. Find Positive Integer Solution for a Given
+    CustomFunction f1;
+    vector<vector<int>> r5 = findSolution(f1, 5);
+    for(int i = 0; i < r5.size(); ++i)
+    {
+        print_vector(r5[i]);
+    }
+#endif
+
+#if (LEETCODE_7)
+// 7. Reverse Integer
+    //cout << reverse(-1) << endl;
+    cout << reverse(-2147483648) << endl;
+#endif
+
+#if (LEETCODE_168)
+// 168. Excel Sheet Column Title
+    cout << convertToTitle(1) << endl;
+    cout << convertToTitle(701) << endl;
+    cout << convertToTitle(28) << endl;
+#endif
+
+#if (LEETCODE_204)
+// 204. Count Primes
+    cout << countPrimes(5) << endl;
+    cout << countPrimes(100) << endl;
+    cout << countPrimes(1000) << endl;
+    cout << countPrimes(499979) << endl;    
+#endif
+
+#if (LEETCODE_69)
+    cout << "LEETCODE_69" << endl;
+    cout << mySqrt(1) << endl;
+    cout << mySqrt(2) << endl;
+    cout << mySqrt(8) << endl;
+    cout << mySqrt(9) << endl;
+    cout << mySqrt(INT_MAX) << endl;    
+#endif
+
+#if (LEETCODE_633)
+// 633. Sum of Square Numbers
+    cout << "LEETCODE_633" << endl;
+    cout << judgeSquareSum(1) << endl;
+    cout << judgeSquareSum(2) << endl;
+    cout << judgeSquareSum(11) << endl;
+    cout << judgeSquareSum(2147483646) << endl;
+#endif
+
+#if (LEETCODE_914)
+// 914. X of a Kind in a Deck of Cards
+    cout << "LEETCODE_914" << endl;
+    vector<int> v6 = {1,2,3,4, 4, 3, 2, 5};
+    vector<int> v7 = {1};
+    vector<int> v8 = {1,1,2,2,2,2};
+    printf("%s\n", hasGroupsSizeX(v6) ? "Yes" : "No");
+    printf("%s\n", hasGroupsSizeX(v7) ? "Yes" : "No");
+    printf("%s\n", hasGroupsSizeX(v8) ? "Yes" : "No");
+#endif
+
+#if (LEETCODE_1104)
+// 1104. Path In Zigzag Labelled Binary Tree
+    cout << "LEETCODE_1104" << endl;
+    print_vector(pathInZigZagTree(14));
+    print_vector(pathInZigZagTree(26));
+#endif
+
+#if (LEETCODE_537)
+// 537. Complex Number Multiplication
+    cout << "LEETCODE_537" << endl;
+    cout << complexNumberMultiply("1+1i", "1+1i") << endl;
+    cout << complexNumberMultiply("1+-1i", "1+-1i") << endl;
+    cout << complexNumberMultiply("1+-1i", "1+-2i") << endl;
 #endif
     return EXIT_SUCCESS;
 }

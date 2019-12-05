@@ -1,7 +1,8 @@
-#include <math.h>
+#include <cmath>
 #include <stdint.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <iostream>
 #include "solution.h"
 
 // Leetcode questions
@@ -440,26 +441,209 @@ vector<int> diStringMatch(string S)
 }
 
 // 1237. Find Positive Integer Solution for a Given
-class CustomFunction {
-public:
-  // Returns positive integer f(x, y) for any given positive integer x and y.
-  int f(int x, int y){return x + y;}
-};
-
 vector<vector<int>> findSolution(CustomFunction& customfunction, int z) 
 {
-    int i = 1;
-    int j = 1;
+    int i = 0;
     vector<vector<int>> r;
-    for(int i = 1;;++i)
+    while(1)
     {
-        for(int j = 1;;++j)
+        ++i;
+        if(customfunction.f(i, 1) > z)
         {
-            if(customfunction.f(i, j) == z)
+            return r;
+        }
+        int j = 0;
+        while(1)
+        {
+            ++j;
+            int m = customfunction.f(i, j);
+            if(m == z)
             {
                 r.push_back(vector<int>{i, j});
                 break;
             }
+            else if(m > z)
+            {
+                break;
+            }
         }
     }
+}
+
+// 7. Reverse Integer
+int reverse(int x) {
+    int64_t r = 0;
+    int64_t t = x;
+    int flag = (x >= 0 ? 1 : -1);
+    t *= flag;
+    while(t)
+    {
+        if((r = r * 10 + t % 10) > INT32_MAX) return 0;
+        t /= 10;
+    }
+    return (int)r * flag;
+}
+
+// 168. Excel Sheet Column Title
+string convertToTitle(int n) {
+    string s;
+    stack<int> d;
+    
+    while(--n > 0)
+    {
+        d.push(n % 26);
+        n /= 26;        
+    }
+    if(n == 0) d.push(0);    
+    while(d.size())
+    {
+        s.push_back('A' + d.top());
+        d.pop();
+    }
+    return s;
+}
+
+// 204. Count Primes
+int countPrimes(int n) {
+    vector<int> v(n);
+    for(int i = 0; i < n; ++i) 
+    {
+        v[i] = i;
+    }
+
+    for(int i = 2; i <= (n - 1) / 2; ++i)
+    {
+        if(v[i] == 0) continue;
+        for(int j = 2; j <= (n - 1) / i; ++j)
+        {
+            v[i * j] = 0;
+        }
+    }
+
+    int r = 0;
+    for(int i = 2; i < n; ++i)
+    {
+        if(v[i] != 0) ++r;
+    }
+    return r;
+}
+
+// 69. Sqrt(x)
+int mySqrt(int x) {
+    uint64_t n = x;
+    uint64_t m = 1;
+    while (m < n)
+    {
+        uint64_t mid = ((uint64_t)m + n) / 2;
+        if(mid * mid > x )
+        {
+            n = mid - 1;
+        }
+        else if(mid * mid < x)
+        {
+            m = mid + 1;
+        }
+        else
+        {
+            return (int)mid;
+        }        
+    }    
+    if(n * n > x) --n;
+    return (int)n; 
+}
+
+// 633. Sum of Square Numbers
+bool judgeSquareSum(int c)
+{
+    for(int m = sqrt(c); m >= 0; --m)
+    {
+        int left = c - m * m;
+        if((int)sqrt(left) * (int)sqrt(left) == left)
+        {
+            cout << m << " " << sqrt(left) << endl;
+            return true;
+        } 
+    }
+    return false;
+}
+
+// 914. X of a Kind in a Deck of Cards
+int gcd(int x, int y)
+{
+    int r = y;
+    if (x == y) return x;
+    else if(x < y)
+    {
+        r = y;
+        y = x;
+        x = r;
+    }
+    // x is bigger
+    while(r != 0)
+    {
+        r = x % y;
+        x = y;
+        y = r;
+    }
+    return x;
+}
+bool hasGroupsSizeX(vector<int>& deck) {
+    unordered_map<int, int> map;
+    for(int i = 0; i < deck.size(); ++i){
+        auto search = map.find(deck[i]);
+        if(search != map.end())
+        {
+            ++search->second;
+        }
+        else
+        {
+            map.insert({deck[i], 1});
+        }        
+    }
+
+    int ref = map.begin()->second;
+    if(ref == 1) return false;
+    for(const auto& it : map)
+    {
+        if(gcd(it.second, ref) < 2) return false; 
+    }
+    return true;    
+}
+
+
+// 1104. Path In Zigzag Labelled Binary Tree
+int reverseOrder(int n)
+{
+    int t = n;
+    int i = 0;
+    while(t >>= 1)
+    {
+        ++i;
+    }
+    return n ^ ((1 << i) - 1); 
+}
+vector<int> pathInZigZagTree(int label) {
+    vector<int> r;
+    int flag = 1;
+    while(label)
+    {
+        r.insert(r.begin(), flag == 1? label : reverseOrder(label));
+        label >>= 1;
+        flag *= -1;
+    }
+    return r;
+}
+
+// 537. Complex Number Multiplication
+string complexNumberMultiply(string a, string b) {
+    string r;
+    int x1 = stoi(a);
+    int x2 = stoi(b);
+    int y1 = stoi(a.substr(a.find('+') + 1));
+    int y2 = stoi(b.substr(b.find('+') + 1));
+    r += to_string(x1 * x2 - y1 * y2);
+    r.push_back('+');
+    r += to_string(x1 * y2 + x2 * y1);
+    r.push_back('i');
+    return r;
 }

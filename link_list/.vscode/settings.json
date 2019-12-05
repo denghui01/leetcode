@@ -2,6 +2,11 @@
     "files.associations": {
         "link_list.h": "cpp",
         "stdio.h": "c",
-        "vector": "cpp"
-    }
+        "vector": "cpp",
+        "cmath": "cpp",
+        "numeric": "cpp",
+        "ostream": "cpp",
+        "*.tcc": "cpp"
+    },
+    "C_Cpp.dimInactiveRegions": true
 }
