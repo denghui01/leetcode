@@ -6,7 +6,12 @@
         "cmath": "cpp",
         "numeric": "cpp",
         "ostream": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.dimInactiveRegions": true
 }

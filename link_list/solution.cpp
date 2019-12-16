@@ -1,4 +1,6 @@
 #include <cmath>
+#include <algorithm>
+#include <unordered_set>
 #include <stdint.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -383,26 +385,22 @@ int oddCells(int n, int m, vector<vector<int>>& indices) {
      return r;
  }
 
- // 977. Squares of a Sorted Array
- vector<int> sortedSquares(vector<int>& A)
- {
-     vector<int> r;
-     return r;        
- }
-
  // 1. Two Sum
 vector<int> twoSum(vector<int>& nums, int target) {
     vector<int> r(2);
+    //sort(nums.begin(), nums.end());
     for(int i = 0; i < nums.size() - 1; ++i)
     {
         for(int j = i + 1; j < nums.size(); ++j)
         {
-            if(nums[i] + nums[j] == target)
-            {
+            if(nums[i] + nums[j] == target){
                 r[0] = i;
                 r[1] = j;
                 return r;
             }
+            // else if(nums[i] + nums[j] > target){
+            //     break;
+            // }
         }
     }
     return r;
@@ -646,4 +644,246 @@ string complexNumberMultiply(string a, string b) {
     r += to_string(x1 * y2 + x2 * y1);
     r.push_back('i');
     return r;
+}
+
+// 167. Two Sum II - Input array is sorted
+vector<int> twoSum2(vector<int>& numbers, int target) {
+    vector<int> r(2);
+    for(int i = 0; i < numbers.size() - 1; ++i)
+    {
+        for(int j = i + 1; j < numbers.size(); ++j)
+        {
+            if(numbers[i] + numbers[j] == target){
+                r[0] = i + 1;
+                r[1] = j + 1;
+                return r;
+            }
+            else if(numbers[i] + numbers[j] > target){
+                break;
+            }
+        }
+    }
+    return r;    
+}
+
+// 509. Fibonacci Number
+int fib(int N) {
+    int n2 = 0;
+    int n1 = 1;
+    int n0 = 0;
+    if(N == 0) return 0;
+    if(N == 1) return 1;
+    for(int i = 2; i <= N; ++i)
+    {
+        n0 = n1 + n2;
+        n2 = n1;
+        n1 = n0;
+    }
+    return n0;
+}
+
+// 15. 3Sum
+vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> r;
+    if(nums.size() < 3) return r;
+    vector<int> e;
+    sort(nums.begin(), nums.end());
+    for(int i = 0; i < nums.size() - 2; ++i){
+        if(nums[i] > 0) return r;
+        if(i > 0 && nums[i] == nums[i - 1]) continue;
+
+        for(int j = i + 1; j < nums.size() - 1; ++j){
+            int s1 = nums[i] + nums[j];
+            if(s1 > 0) break;
+            if(j != i + 1 && nums[j] == nums[j - 1]) continue;
+
+            if(binary_search(nums.begin() + j + 1, nums.end(), 0-s1)){
+                r.push_back({nums[i], nums[j], 0-s1});
+            }
+        }
+    }
+    return r;
+}
+
+// 832. Flipping an Image
+vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+    vector<vector<int>> r;    
+    for(auto &v : A){
+        vector<int> e;
+        e.clear();
+        for(auto it = v.crbegin(); it != v.crend(); ++it){
+            e.push_back(*it ^ 1);
+        }
+        r.push_back(e);
+    }
+    return r;    
+}
+
+// 977. Squares of a Sorted Array
+vector<int> sortedSquares(vector<int>& A) {
+    vector<int> r;
+    stack<int> s;
+    int i = 0;
+    while(i < A.size() && A[i] < 0)
+    {
+        s.push(A[i]);
+        ++i;
+    }
+
+    while(i < A.size())
+    {
+        while(s.size() && 0-s.top() < A[i])
+        {
+            r.push_back(s.top() * s.top());
+            s.pop();
+        }
+        r.push_back(A[i] * A[i]);
+        ++i;
+    }
+
+    while(i >= A.size() && s.size())
+    {
+        r.push_back(s.top() * s.top());
+        s.pop();
+    }
+    return r;
+}
+
+// 561. Array Partition I
+int arrayPairSum(vector<int>& nums) {
+    sort(nums.begin(), nums.end());
+    int sum = 0;
+    for(auto it = nums.begin(); it != nums.end(); it += 2)
+    {
+        sum += *it;
+    }
+    return sum;
+}
+
+// 1051. Height Checker
+int heightChecker(vector<int>& heights){
+    vector<int> origin;
+    int d = 0;
+    copy(heights.begin(), heights.end(), back_inserter(origin));
+    sort(heights.begin(), heights.end());
+    for(int i = 0; i < heights.size(); ++i){
+        if(heights[i] != origin[i]) ++d;
+    }
+    return d;
+}
+
+// 922. Sort Array By Parity II
+vector<int> sortArrayByParityII(vector<int>& A)
+{
+    stack<int> sodd;
+    stack<int> seven;
+    vector<int> r;
+    for(const auto& i: A)
+    {
+        if(i % 2 == 0)
+        {
+            seven.push(i);
+        }
+        else
+        {
+            sodd.push(i);
+        }        
+    }
+    while(seven.size())
+    {
+        r.push_back(seven.top());
+        r.push_back(sodd.top());
+        seven.pop();
+        sodd.pop();
+    }
+    return r;
+}
+
+// 665. Non-decreasing Array
+bool checkPossibility(vector<int>& nums) {
+    int unorder = 0;
+    for(int i = 0; i < nums.size() - 1; ++i){
+        if(nums[i] > nums[i + 1]){
+            unorder++;
+            if(i != 0 && nums[i + 1] < nums[i - 1]){
+                nums[i + 1] = nums[i];
+            }
+        }
+        if(unorder > 1) return false;
+    }
+    return true;    
+}
+
+
+// 414. Third Maximum Number
+int thirdMax(vector<int>& nums)
+{
+    int64_t max1st = INT64_MIN;
+    int64_t max2nd = INT64_MIN;
+    int64_t max3rd = INT64_MIN;
+    int count = 0;   
+    for(const auto &it : nums){
+        if(it > max1st) 
+        {
+            max3rd = max2nd;
+            max2nd = max1st;
+            max1st = it;
+            count++;
+        }
+        else if(it != max1st && it > max2nd)
+        {
+            max3rd = max2nd;
+            max2nd = it;
+            count++;
+        }
+        else if(it != max1st && it != max2nd && it > max3rd)
+        {
+            max3rd = it;
+            count++;
+        }        
+    }
+    if(count > 2 && max3rd != max2nd)
+    {
+        return (int)max3rd;
+    }
+    else
+    {
+        return (int)max1st;
+    }
+}
+
+// 581. Shortest Unsorted Continuous Subarray
+int findUnsortedSubarray(vector<int>& nums)
+{
+    vector<int> v = nums;
+    sort(nums.begin(), nums.end());
+    int head = -1, tail = -2;
+    for(int i = 0; i < nums.size(); ++i)
+    {
+        if(head == -1 && nums[i] != v[i])
+        {
+            head = i;
+        }
+        else if(nums[i] != v[i])
+        {
+            tail = i;
+        }
+    }
+    return tail - head + 1;
+}
+
+// 605. Can Place Flowers
+bool canPlaceFlowers(vector<int>& flowerbed, int n)
+{
+    int pos = -2;
+    int m = 0;
+    for(int i = 0; i < flowerbed.size(); ++i)
+    {
+        if(flowerbed[i] == 1){
+            m += (i - pos) / 2  - 1;
+            pos = i;
+        }
+    }
+    m += (flowerbed.size() + 1 - pos) / 2 - 1;
+    return m >= n;
 }

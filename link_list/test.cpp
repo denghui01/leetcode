@@ -24,12 +24,23 @@
 #define LEETCODE_7      0
 #define LEETCODE_168    0
 #define LEETCODE_204    0
-#define LEETCODE_69     1
-#define LEETCODE_633    1
-#define LEETCODE_914    1
-#define LEETCODE_1104   1
-#define LEETCODE_537    1
-
+#define LEETCODE_69     0
+#define LEETCODE_633    0
+#define LEETCODE_914    0
+#define LEETCODE_1104   0
+#define LEETCODE_537    0
+#define LEETCODE_167    0
+#define LEETCODE_509    0
+#define LEETCODE_15     0
+#define LEETCODE_832    0
+#define LEETCODE_977    0
+#define LEETCODE_561    0
+#define LEETCODE_1051   0
+#define LEETCODE_922    0
+#define LEETCODE_665    1
+#define LEETCODE_414    1
+#define LEETCODE_581    1
+#define LEETCODE_605    1
 void print_list(ptr_node head)
 {
     ptr_node node = head;
@@ -230,8 +241,9 @@ int main()
 
 #if (LEETCODE_1)
     //1. Two Sum
-    vector<int> v3 = {1,2,3,4};
-    vector<int> r3 = twoSum(v3, 7);
+    cout << "LEETCODE_1" << endl;
+    vector<int> v3 = {2,7,11,15};
+    vector<int> r3 = twoSum(v3, 9);
     print_vector(r3);
 #endif
 
@@ -315,6 +327,118 @@ int main()
     cout << complexNumberMultiply("1+1i", "1+1i") << endl;
     cout << complexNumberMultiply("1+-1i", "1+-1i") << endl;
     cout << complexNumberMultiply("1+-1i", "1+-2i") << endl;
+#endif
+ 
+ #if (LEETCODE_167)
+ // 167. Two Sum II - Input array is sorted
+    cout << "LEETCODE_167" << endl;
+    vector<int> v9 = {2,7,11,15};
+    print_vector(twoSum2(v9, 9));
+ #endif
+ 
+ #if (LEETCODE_509)
+ // 509. Fibonacci Number
+    cout << "LEETCODE_509" <<endl;
+    cout << fib(0) << endl;
+    cout << fib(1) << endl;
+    cout << fib(2) << endl;
+    cout << fib(3) << endl;
+    cout << fib(4) << endl;
+    cout << fib(5) << endl;
+    cout << fib(10) << endl;
+ #endif
+
+#if (LEETCODE_15)
+ // 15. 3Sum
+    cout << "LEETCODE_15" <<endl;
+    vector<int> v10 = {-1,0,1,2,-1,-4}; 
+    vector<vector<int>> r15 = threeSum(v10);
+    for(int i = 0; i < r15.size(); ++i)
+    {
+        print_vector(r15[i]);
+    }
+ #endif
+
+#if (LEETCODE_832)
+// 832. Flipping an Image
+    cout << "LEETCODE_832" <<endl;
+    vector<vector<int>> v11 = {{1,1,0},{1,0,1},{0,0,0}};
+    vector<vector<int>> r832 = flipAndInvertImage(v11);
+    for(int i = 0; i < r832.size(); ++i)
+    {
+        print_vector(r832[i]);
+    } 
+#endif
+
+#if (LEETCODE_977)
+// 977. Squares of a Sorted Array
+    cout << "LEETCODE_977" <<endl;
+    //vector<int> v977 = {-4,-1,0,3,10};
+    vector<int> v977 = {-7,-3,2,3,11};
+    vector<int> r977 = sortedSquares(v977);
+    print_vector(r977);
+#endif
+
+#if (LEETCODE_561)
+// 561. Array Partition I
+    cout << "LEETCODE_561" <<endl;
+    vector<int> v561 = {1, 4, 2, 3};
+    cout << arrayPairSum(v561) << endl;
+#endif
+
+#if (LEETCODE_1051)
+// 1051. Height Checker
+    cout << "LEETCODE_1051" <<endl;
+    vector<int> v1051 = {1,1,4,2,1,3};
+    cout << heightChecker(v1051) << endl;
+#endif
+
+#if (LEETCODE_922)
+// 922. Sort Array By Parity II
+    cout << "LEETCODE_922" <<endl;
+    vector<int> v922 = {4,2,5,7};
+    print_vector(sortArrayByParityII(v922));
+#endif
+
+#if (LEETCODE_665)
+// 665. Non-decreasing Array
+    cout << "LEETCODE_665" <<endl;
+    //vector<int> v665 = {3, 4, 2, 3};
+    //vector<int> v665 = {4, 2, 3};
+    vector<int> v665 = {-1, 4, 2, 3};
+    cout << checkPossibility(v665) << endl;
+#endif
+
+#if (LEETCODE_414)
+// 414. Third Maximum Number
+    cout << "LEETCODE_414" <<endl;
+    vector<int> v414_0 = {1, 4, 7, 7, 7, 7, 2, 4, 3};
+    vector<int> v414_1 = {1, 1, 2};
+    vector<int> v414_2 = {1, 2, 3, 2};
+    vector<int> v414_3 = {1, 2, INT_MIN};
+    vector<int> v414_4 = {INT_MIN, INT_MIN, INT_MIN, 1};
+    cout << thirdMax(v414_0) << endl;
+    cout << thirdMax(v414_1) << endl;
+    cout << thirdMax(v414_2) << endl;
+    cout << thirdMax(v414_3) << endl;    
+    cout << thirdMax(v414_4) << endl;    
+#endif
+
+#if (LEETCODE_581)
+// 581. Shortest Unsorted Continuous Subarray
+    cout << "LEETCODE_581" <<endl;
+    //vector<int> v581 = {2, 6, 4, 8, 10, 9, 15};
+    //vector<int> v581 = {2, 6, 4, 1, 8, 9, 15};
+    vector<int> v581 = {1, 2, 3, 4};
+    cout << findUnsortedSubarray(v581) << endl;
+#endif
+
+#if (LEETCODE_605)
+// 605. Can Place Flowers
+    cout << "LEETCODE_605" <<endl;
+    //vector<int> v605 = {1, 0, 0, 0, 1, 0, 0};
+    vector<int> v605 = {1, 0};
+    cout << canPlaceFlowers(v605, 1) << endl;
 #endif
     return EXIT_SUCCESS;
 }

@@ -23,7 +23,6 @@ int* nextLargerNodes(struct ListNode* head, int* returnSize);
 int minTimeToVisitAllPoints(vector<vector<int>>& points);
 int oddCells(int n, int m, vector<vector<int>>& indices);
 vector<int> sortArrayByParity(vector<int>& A);
-vector<int> sortedSquares(vector<int>& A);
 vector<int> twoSum(vector<int>& nums, int target);
 vector<int> diStringMatch(string S);
 class CustomFunction {
@@ -40,6 +39,18 @@ bool judgeSquareSum(int c);
 bool hasGroupsSizeX(vector<int>& deck);
 vector<int> pathInZigZagTree(int label);
 string complexNumberMultiply(string a, string b);
+vector<int> twoSum2(vector<int>& numbers, int target);
+int fib(int N);
+vector<vector<int>> threeSum(vector<int>& nums);
+vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A);
+vector<int> sortedSquares(vector<int>& A);
+int arrayPairSum(vector<int>& nums);
+int heightChecker(vector<int>& heights);
+vector<int> sortArrayByParityII(vector<int>& A);
+bool checkPossibility(vector<int>& nums);
+int thirdMax(vector<int>& nums);
+int findUnsortedSubarray(vector<int>& nums);
+bool canPlaceFlowers(vector<int>& flowerbed, int n);
 #endif
 
 
