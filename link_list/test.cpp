@@ -41,6 +41,7 @@
 #define LEETCODE_414    1
 #define LEETCODE_581    1
 #define LEETCODE_605    1
+#define LEETCODE_950    1
 void print_list(ptr_node head)
 {
     ptr_node node = head;
@@ -440,5 +441,13 @@ int main()
     vector<int> v605 = {1, 0};
     cout << canPlaceFlowers(v605, 1) << endl;
 #endif
+
+#if (LEETCODE_950)
+// 950. Reveal Cards In Increasing Order
+    cout << "LEETCODE_950" <<endl;
+    vector<int> v950 = {17, 13, 11, 2, 3, 5, 7};
+    print_vector(deckRevealedIncreasing(v950));
+#endif
+
     return EXIT_SUCCESS;
 }

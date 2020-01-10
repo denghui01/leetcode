@@ -887,3 +887,24 @@ bool canPlaceFlowers(vector<int>& flowerbed, int n)
     m += (flowerbed.size() + 1 - pos) / 2 - 1;
     return m >= n;
 }
+
+// 950. Reveal Cards In Increasing Order
+vector<int> deckRevealedIncreasing(vector<int>& deck)
+{
+    vector<int> r;
+    sort(deck.begin(), deck.end());
+    int i = 0;
+    while(r.size() != deck.size())
+    {
+        int e = deck[i % deck.size()];
+        while(!e)
+        {
+            ++i;
+            e = deck[i % deck.size()];
+        }
+        r.push_back(e);
+        deck[i % deck.size()] = 0;
+        i += 2;
+    }
+    return r;
+}

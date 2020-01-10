@@ -51,6 +51,7 @@ bool checkPossibility(vector<int>& nums);
 int thirdMax(vector<int>& nums);
 int findUnsortedSubarray(vector<int>& nums);
 bool canPlaceFlowers(vector<int>& flowerbed, int n);
+vector<int> deckRevealedIncreasing(vector<int>& deck);
 #endif
 
 
